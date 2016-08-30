@@ -1,6 +1,8 @@
 jsh.addEventListener("ready", function() {
     build_dom();
     bind_listeners();
+
+    if (window.location.href.indexOf("#") == -1) jsh.pages["syllabus"].open();
 });
 
 function build_dom() {
