@@ -58,13 +58,13 @@ function open_homework(resources) {
             message: function() {
                 var message = "<ul>";
                 for (var i = 0; i < resources.length; i++) {
-                    message += jsh.str("<li><a class='alert_link' href='./downloads/{}'>{}</a></li>", resources[i], resources[i])
+                    message += jsh.str("<li><a class='alert_link' target='_blank' href='./downloads/{}'>{}</a></li>", resources[i], resources[i])
                 }
                 message += "</ul>";
                 return message;
             }()
         }).open();
     } else {
-        window.location = "./downloads/" + resources[0];
+        window.open("./downloads/" + resources[0],'_blank');
     }
 }
