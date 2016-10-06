@@ -1,0 +1,9 @@
+Golding, rachel     :[CS1301, 100, 3] [Calculus, 100, 4] [PhysicsXtreme, 98, 4] [English, 80, 2]
+diaddiggoooo, joshua :[CS101, 99, 3] [CS 2200, 92, 4] [PhysicsXtreme, 98, 4] [Biolgy, 84, 4]
+kassem, sam :[CS9999, 100, 3] [CS4440, 100, 3] [CS 3251, 100, 4] [English, 100, 2]
+chia, erica :[CS1301, 100, 3] [Calculus, 100, 4] [PhysicsXtreme, 98, 4] [English, 80, 2]
+mcknight, charlie :[CS1301, 89, 4] [CS2200, 89, 4] [CS4400, 89, 4] [CS3510, 89, 4]
+ bryant, charlay  :[CS1301, 100, 3] [LMC3311, 94, 2] [CS3311, 94, 2] [CS 1332, 11, 3]
+
+
+shwarma, chetie<3 :[CS1301, 100, 3] [CS2110, 100, 4] [CS1331, 100, 3] [CS1332, 99, 3]
