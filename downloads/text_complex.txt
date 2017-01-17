@@ -1,8 +1,0 @@
-gellar,  sarah michelle  :  [Math 101,  90,3 ]
- dear, lucas:[CS2110, 83,  4][2210,100,3]
-
- zea, Lucas        :    
-Kassem,Sam:[CS1301,100,3][CS9999999,100,3][CSXPERT, 100,1][Amazon101,100,4][CS1332,100, 2][CS2110, 100,1]
-
-
-
