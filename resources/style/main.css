@@ -126,26 +126,32 @@ a {
     margin-top: 51px;
 }
 
-#page_help_desk table {
+table {
     color: #ddd;
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+#participation_table tr:nth-child(1),
 #page_help_desk table tr:nth-child(1),
-#page_help_desk table tr td:nth-child(1){
+#page_help_desk table tr td:nth-child(1) {
     background: rgba(0, 0, 0, 0.4);
     text-align: center;
 }
 
-#page_help_desk td {
+#participation_table {
+    width: 100%;
+}
+
+td {
     padding: 10px;
     border: 1px solid #111;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .disabled_cell {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 #page_syllabus {
