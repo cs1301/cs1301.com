@@ -1,3 +1,8 @@
+var queue_last_id = -1;
+var queue_remove_timeouts = {};
+var queue_ids = new Set();
+var queue_remove_ids = new Set();
+
 jsh.addEventListener("ready", function() {
     build_dom();
     bind_listeners();
@@ -27,6 +32,101 @@ function build_dom() {
             });
         }
     }
+
+    setInterval(function() {
+        new jsh.Request({
+            url: "./db/queue.py",
+            parse_json: true,
+            data: {
+                action: "get",
+                last_id: queue_last_id
+            },
+            callback: function(result) {
+                var queue = jsh.get("#queue");
+                for (var i = 0; i < result.data.length; i++) {
+                    var id = result.data[i][0];
+                    if (queue_ids.has(id)) {
+                        queue_remove_ids.delete(id);
+                        continue;
+                    }
+                    queue_ids.add(id);
+                    queue_last_id = id;
+
+                    var queue_item = document.createElement("div");
+                    queue_item.classList.add("queue_item");
+                    queue_item.setAttribute("id", "queue_item_" + id);
+
+                    var queue_item_check = document.createElement("span");
+                    queue_item_check.classList.add("queue_item_check");
+
+                    var queue_item_name = document.createElement("span");
+                    queue_item_name.classList.add("queue_item_name");
+                    queue_item_name.innerText = result.data[i][1];
+
+                    queue_item.appendChild(queue_item_check);
+                    queue_item.appendChild(queue_item_name);
+                    queue.appendChild(queue_item);
+
+                    queue_item.addEventListener("click", queue_item_handler);
+                    queue_item.setAttribute("uid", result.data[i][0]);
+                }
+
+                for (var iter = queue_remove_ids.values(), val= null; id=iter.next().value;) {
+                    var item = jsh.get("#queue_item_" + id);
+                    if (item) {
+                        remove_queue_item(item);
+                    }
+                    queue_ids.delete(id);
+                }
+                queue_remove_ids = new Set();
+            }
+        }).send();
+    }, 2000);
+
+    setInterval(function() {
+        queue_last_id = -1;
+        queue_remove_ids = new Set(queue_ids);
+    }, 5000);
+}
+
+function queue_item_handler(e) {
+    if (!e.target.classList.contains("queue_item")) {
+        e.target.parentNode.click();
+    } else {
+        var check = e.target.childNodes[0];
+        var id = parseInt(e.target.getAttribute("uid"));
+        if (!check.classList) check = e.target.childNodes[1];
+        if (check.classList.contains("queue_item_checked")) {
+            check.classList.remove("queue_item_checked");
+            if (queue_remove_timeouts[id]) {
+                clearTimeout(queue_remove_timeouts[id]);
+            }
+        } else {
+            check.classList.add("queue_item_checked");
+            queue_remove_timeouts[id] = setTimeout(function() {
+                new jsh.Request({
+                    url: "./db/queue.py",
+                    parse_json: true,
+                    data: {
+                        action: "remove",
+                        id: id
+                    },
+                    callback: function(result) {
+                        if (result.success) {
+                            remove_queue_item(e.target);
+                        }
+                    }
+                }).send();
+            }, 5000)
+        }
+    }
+}
+
+function remove_queue_item(queue_item) {
+    queue_item.classList.add("queue_item_exit");
+    setTimeout(function() {
+        queue_item.remove();
+    }, 500);
 }
 
 function bind_listeners() {
@@ -48,6 +148,22 @@ function bind_listeners() {
             open_homework(resources);
         });
     }
+
+    jsh.get("#help_queue_input").addEventListener("keypress", function(e) {
+        if (e.keyCode == 13) {
+            new jsh.Request({
+                url: "./db/queue.py",
+                parse_json: true,
+                data: {
+                    action: "insert",
+                    name: e.target.value
+                },
+                callback: function(result) {
+                    e.target.value = "";
+                }
+            }).send();
+        }
+    });
 }
 
 function open_homework(resources) {

@@ -33,7 +33,8 @@ a {
     box-sizing: border-box;
 }
 
-.homework_list_item {
+.homework_list_item,
+.queue_item {
     padding: 20px;
     box-sizing: border-box;
     border: 1px solid #222;
@@ -44,13 +45,17 @@ a {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background: #444;
     transition: background 0.2s, border 0.5s;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
-.homework_list_item:hover {
+.homework_list_item:hover,
+.queue_item:hover {
     border: 1px solid #37a;
 }
 
-.homework_list_item:active {
+.homework_list_item:active,
+.queue_item:active {
     background: #19344d;
 }
 
@@ -176,4 +181,49 @@ a {
     font-weight: 800;
     line-height: 20px;
     color: #37a;
+}
+
+#help_queue {
+    padding-top: 10px;
+}
+
+#help_queue_input {
+    width: 100%;
+    border: 1px solid #555;
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.queue_item {
+    transition: .5s;
+}
+
+.queue_item_check {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: 2px solid #07c;
+    position: relative;
+    top: 4px;
+    background: #222;
+    transition: 0.3s;
+}
+
+.queue_item_name {
+    margin-left: 5px;
+}
+
+.queue_item_checked {
+    background: #0cf;
+    box-shadow: 0 0 5px #0af;
+}
+
+.queue_item_exit {
+    -webkit-transform: translateX(50px);
+    transform: translateX(50px);
+    opacity: 0;
 }
