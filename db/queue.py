@@ -16,7 +16,7 @@ def do_action(action, data):
         result["success"] = True
         result["data"] = c.fetchall()
     elif action == "insert":
-        name = str(re.sub(r'[^A-Za-z]', r'', data["name"].value))
+        name = str(re.sub(r'[^\ A-Za-z0-9]', r'', data["name"].value))
         c.execute("INSERT INTO queue (name) VALUES (?);", [name])
         result["success"] = True
     elif action == "remove":
