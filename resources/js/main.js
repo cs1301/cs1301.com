@@ -39,7 +39,8 @@ function build_dom() {
             parse_json: true,
             data: {
                 action: "get",
-                last_id: queue_last_id
+                last_id: queue_last_id,
+                cache: (new Date()).getTime()
             },
             callback: function(result) {
                 var queue = jsh.get("#queue");
@@ -109,7 +110,8 @@ function queue_item_handler(e) {
                     parse_json: true,
                     data: {
                         action: "remove",
-                        id: id
+                        id: id,
+                        cache: (new Date()).getTime()
                     },
                     callback: function(result) {
                         if (result.success) {
@@ -156,7 +158,8 @@ function bind_listeners() {
                 parse_json: true,
                 data: {
                     action: "insert",
-                    name: e.target.value
+                    name: e.target.value,
+                    cache: (new Date()).getTime()
                 },
                 callback: function(result) {
                     e.target.value = "";
