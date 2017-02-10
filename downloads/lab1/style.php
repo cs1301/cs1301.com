@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/html');
+header('Content-Type: text/css');
 header("Content-disposition: attachment; filename=\"style.css\"");
 $hidden_char = json_decode('"\u200c"');
 $index = file_get_contents("style.css");
