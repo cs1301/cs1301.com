@@ -8,6 +8,13 @@ jsh.addEventListener("ready", function() {
     bind_listeners();
 
     if (window.location.href.indexOf("#") == -1) jsh.pages["syllabus"].open();
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-50036831-3', 'auto');
+    ga('send', 'pageview');
 });
 
 function build_dom() {
@@ -39,7 +46,8 @@ function build_dom() {
             parse_json: true,
             data: {
                 action: "get",
-                last_id: queue_last_id
+                last_id: queue_last_id,
+                cache: (new Date()).getTime()
             },
             callback: function(result) {
                 var queue = jsh.get("#queue");
@@ -109,7 +117,8 @@ function queue_item_handler(e) {
                     parse_json: true,
                     data: {
                         action: "remove",
-                        id: id
+                        id: id,
+                        cache: (new Date()).getTime()
                     },
                     callback: function(result) {
                         if (result.success) {
@@ -156,7 +165,8 @@ function bind_listeners() {
                 parse_json: true,
                 data: {
                     action: "insert",
-                    name: e.target.value
+                    name: e.target.value,
+                    cache: (new Date()).getTime()
                 },
                 callback: function(result) {
                     e.target.value = "";
