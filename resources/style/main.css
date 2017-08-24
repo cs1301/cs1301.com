@@ -134,8 +134,8 @@ table {
 }
 
 #participation_table tr:nth-child(1),
-#page_help_desk table tr:nth-child(1),
-#page_help_desk table tr td:nth-child(1) {
+#page_help_desk #page_recitations table tr:nth-child(1),
+#page_help_desk #page_recitations table tr td:nth-child(1) {
     background: rgba(0, 0, 0, 0.4);
     text-align: center;
 }
