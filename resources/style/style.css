@@ -1,0 +1,166 @@
+/* Style for generating autograder reports */
+#content, #result {
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#search {
+  width: 100%;
+  border: none;
+  background: #222;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.result_item {
+  background: #1e1e1e;
+  padding: 5px;
+  font-size: 12px;
+  border-top: 1px solid #444;
+  color: #ccc;
+}
+
+.result_item:hover {
+  background: #444;
+  cursor: pointer;
+}
+
+.current {
+  font-size: 12px;
+  color: #ccc;
+}
+
+#select_files {
+  background: #ddd;
+  padding: 10px;
+  text-align: center;
+  color: #000;
+  cursor: pointer;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+body {
+  background: #333;
+  color: #fff;
+
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+table {
+  font-size: 100%;
+}
+pre {
+    margin: 0;
+}
+a {
+    color: #aff;
+}
+td a {
+    color: #333;
+}
+
+td {
+    max-width: 500px;
+}
+
+
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+    margin: 2em 0 .5em 0;
+    padding: 0 0 0 5px;
+    color: white;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    font-size: 15px;
+    line-height: 10px;
+}
+.heading h1 {
+    color: #6Cf;
+    text-align: center;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 100;
+  display: none;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+    display: none;
+}
+
+.heading .description {
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+
+.description {
+  text-align: right;
+  color: #aaa;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.errorText {
+    overflow: scroll;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    padding-bottom: 0;
+    background-color: #222;
+    border: 1px solid #999;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; background: #ccc; color: #333; }
+.passClass  { color: #4F8A10; background-color: #DFF2BF;}
+.failClass  { color: #9F6000; background-color: #FEEFB3; }
+.errorClass { color: #D8000C; background-color: #FFBABA; }
+.passCase   { color: #4F8A10; background-color: #DFF2BF; }
+.failCase   { color: #9F6000; background-color: #FEEFB3; }
+.errorCase  { color: #D8000C; background-color: #FFBABA; font-weight: bold; }
+.hiddenRow  { display: none !important; }
+.testcase   { margin-left: 2em; }
